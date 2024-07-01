@@ -1,0 +1,85 @@
+version: 2
+
+sources:
+  - name: landing
+    database: BI_MODELING_DATABASE_TEST
+    schema: L1_LANDING
+    tables:
+      - name: sales
+        description: "Il s'agit de la table représentant le contenu des ventes tels que reçus des systèmes opérants"
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+            description: "id de la transaction"
+
+  - name: processing
+    database: BI_MODELING_DATABASE_TEST
+    schema: L2_PROCESSING
+    tables:
+      - name: dim_customer
+        description: "Il s'agit d'une table de dimensions de mon système représentant les informations des clients tels que reçus des systèmes opérants"
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+            description: "id du client"
+          - name: first_name
+            description: "prénom du client"
+          - name: last_name
+            description: "nom du client"
+          - name: phone_number
+            description: "numéro de téléphone du client"
+          - name: email
+            description: "email du client"
+          - name: card_number
+            description: "numéro de carte bancaire du client"
+          - name: card_type
+            description: "type de carte bancaire du client (Visa, Mastercard, ...)"
+          - name: card_expiration_date
+            description: "date d'expiration de la carte bancaire du client"
+          - name: card_delivery_bank
+            description: "banque émettrice de la carte bancaire du client"
+
+      - name: dim_product
+        description: "Il s'agit d'une table de dimensions de mon système représentant les informations des produits tels que reçus des systèmes opérants"
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+            description: "id du produit"
+
+      - name: dim_employee
+        description: "Il s'agit d'une table de dimensions de mon système représentant les informations des employés tels que reçus des systèmes opérants"
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+            description: "id de l'employé"
+
+      - name: fact_sales
+        description: "Il s'agit d'une table de faits de mon système représentant les informations des ventes tels que reçus des systèmes opérants. Elle est la table centrale de mon système reliée aux tables de dimensions par des clés étrangères"
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+            description: "id de la vente"
+          - name: customer_id
+            tests:
+              - not_null
+            description: "id du client; clé étrangère vers la table dim_customer"
+          - name: product_id
+            tests:
+              - not_null
+            description: "id du produit; clé étrangère vers la table dim_product"
+          - name: employee_id
+            tests:
+              - not_null
+            description: "id de l'employé; clé étrangère vers la table dim_employee"
+          - name: total_amount
+            description: "montant total du produit acheté"

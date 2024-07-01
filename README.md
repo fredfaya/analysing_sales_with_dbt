@@ -20,4 +20,4 @@ Les requetes se font sur une seule table ne necessitant pas de jointure particul
 *Exemple de table finales*:
 - client_fidelity : Elle regroupe des données sur les clients afin d'evaluer leur achats, les dommes dépensées, le nombre d'achats quotidiens,etc
 - employees_performances: Pour evaluer les performances des employés, leurs ventes, les sommes qu'ils raportent sur la période des données recus
-- product_popularity_per_day: Une table pour permettre de connaitre la popularité d'un produit dans le temps, le nombre de fois où il est acheté, etc.# analysing_sales_with_dbt
+- product_popularity_per_day: Une table pour permettre de connaitre la popularité d'un produit dans le temps, le nombre de fois où il est acheté, etc.
